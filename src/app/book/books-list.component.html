@@ -2,7 +2,7 @@
   <h1 class="section-title">Here's the list of our books. Happy Reading</h1>
   <div class="section-list-container">
     <ul class="books-list">
-      <li *ngFor="let book as books;" class="book-item">
+      <li *ngFor="let book of books | async" class="book-item">
         <div class="book-title">{{ book.title }}</div>
         <div class="book-chapters">{{ book.chapters.length }}</div>
         <div class="book-status">{{ book.status }}</div>

@@ -4,6 +4,9 @@ import { BooksListComponent } from './books-list.component';
 
 @NgModule({
   declarations: [BooksListComponent],
+  exports: [
+    BooksListComponent
+  ],
   imports: [
     CommonModule
   ]

@@ -19,7 +19,7 @@ const BooksQuery = gql`{
 }`;
 
 @Component({
-  selector: 'app-book',
+  selector: 'app-books-list',
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.scss']
 })
