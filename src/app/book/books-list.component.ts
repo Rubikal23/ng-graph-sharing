@@ -4,19 +4,8 @@ import {Observable} from "rxjs";
 
 import gql from 'graphql-tag';
 
-import { BookType, Query } from "./book.type";
+import { Book, Query } from "./book.type";
 import {map} from "rxjs/operators";
-
-const BooksQuery = gql`{
-    query allBooks {
-        allBooks {
-            id
-            title
-            chapters
-            status
-        }
-    }
-}`;
 
 @Component({
   selector: 'app-books-list',
@@ -24,14 +13,24 @@ const BooksQuery = gql`{
   styleUrls: ['./books-list.component.scss']
 })
 export class BooksListComponent implements OnInit {
-  books: Observable<BookType[]>;
+  books: Observable<Book>;
+  booksQuery = gql`{
+      myBook {
+        id
+        price
+        status
+        title
+      }
+  }`;
 
   constructor(private apollo: Apollo) { }
 
   ngOnInit() {
-    this.books = this.apollo.watchQuery<Query>({
-      query: BooksQuery
+    this.apollo.watchQuery<Query>({
+      query: this.booksQuery
     })
-    .valueChanges.pipe(map(result => result.data.allBooks));
+    .valueChanges.subscribe(result => {
+      result.data.myBook;
+    });
   }
 }

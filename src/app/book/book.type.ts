@@ -1,10 +1,10 @@
-export type BookType = {
+export type Book = {
   id: number;
   title: string;
-  chapters: object[]  ;
   status: string;
+  price: number;
 }
 
 export type Query = {
-  allBooks: BookType[];
+  myBook: Book;
 }
