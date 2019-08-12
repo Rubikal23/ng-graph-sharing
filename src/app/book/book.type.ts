@@ -7,4 +7,5 @@ export type Book = {
 
 export type Query = {
   myBook: Book;
+  books: Book[];
 }

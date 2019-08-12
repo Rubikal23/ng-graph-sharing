@@ -4,6 +4,9 @@ import { HootComponent } from './hoot.component';
 
 @NgModule({
   declarations: [HootComponent],
+  exports: [
+    HootComponent
+  ],
   imports: [
     CommonModule
   ]

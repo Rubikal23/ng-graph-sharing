@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BooksListComponent } from './books-list.component';
+import {HootModule} from "../hoot/hoot.module";
 
 @NgModule({
   declarations: [BooksListComponent],
@@ -8,7 +9,8 @@ import { BooksListComponent } from './books-list.component';
     BooksListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HootModule
   ]
 })
 export class BooksModule { }
