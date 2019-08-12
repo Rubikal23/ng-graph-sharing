@@ -22,20 +22,6 @@ import { BooksModule } from "./book/books.module";
     ApolloModule,
     BooksModule,
   ],
-  providers: [{
-    provide: APOLLO_OPTIONS,
-    useFactory: (httpLink: HttpLink) => {
-      return {
-        cache: new InMemoryCache(),
-        link: httpLink.create({
-          uri: "https://o5x5jzoo7z.sse.codesandbox.io/graphql"
-        }),
-        resolvers,
-        typeDefs,
-      }
-    },
-    deps: [HttpLink]
-  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
