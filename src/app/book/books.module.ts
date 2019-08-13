@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BooksListComponent } from './books-list.component';
-import {HootModule} from "../hoot/hoot.module";
+import { ChapterComponent } from './chapter/chapter.component';
 
 @NgModule({
-  declarations: [BooksListComponent],
+  declarations: [BooksListComponent, ChapterComponent],
   exports: [
     BooksListComponent
   ],
   imports: [
-    CommonModule,
-    HootModule
+    CommonModule
   ]
 })
 export class BooksModule { }
