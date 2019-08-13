@@ -3,7 +3,7 @@ import {Apollo} from "apollo-angular";
 
 import gql from 'graphql-tag';
 
-import {Book, Query} from "./book.type";
+import {Book, Query} from "../book.type";
 
 @Component({
   selector: 'app-books-list',
