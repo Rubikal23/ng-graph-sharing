@@ -5,7 +5,7 @@ export type Book = {
   price: number;
 }
 
-export type Query = {
+export type BookQuery = {
   myBook: Book;
   books: Book[];
 }
