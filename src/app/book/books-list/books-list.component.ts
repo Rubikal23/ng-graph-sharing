@@ -11,18 +11,10 @@ import {Book, Query} from "../book.type";
   styleUrls: ['./books-list.component.scss'],
 })
 export class BooksListComponent implements OnInit {
-  book: Book;
-  booksQuery = gql`{
-      myBook {
-          id
-          price
-          status
-          title
-      }
-  }`;
+  books: Book[];
 
   allBooksQuery = gql`{
-      books {
+      allBooks {
           id
           price
           status
@@ -35,10 +27,10 @@ export class BooksListComponent implements OnInit {
 
   ngOnInit() {
     this.apollo.watchQuery<Query>({
-      query: this.booksQuery
+      query: this.allBooksQuery
     })
       .valueChanges.subscribe(result => {
-      this.book = result.data.myBook;
+      this.books = result.data.allBooks;
     });
   }
 }
