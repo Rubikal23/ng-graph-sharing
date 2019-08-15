@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import gql from "graphql-tag";
 import {Apollo} from "apollo-angular";
 import {Book, Query} from "../book.type";
+import {BookService} from "../book.service";
 
 @Component({
   selector: 'app-book',
@@ -9,25 +10,15 @@ import {Book, Query} from "../book.type";
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
-  bookQuery = gql`{
-      myBook {
-          id
-          price
-          status
-          title
-      }
-  }`;
+
   book: Book;
 
-  constructor(private apollo: Apollo) { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
-    this.apollo.watchQuery<Query>({
-      query: this.bookQuery
-    })
-      .valueChanges.subscribe(results => {
-        this.book = results.data.myBook;
-    })
+    this.bookService.getBook().subscribe(book => {
+      this.book = book;
+    });
   }
 
   changeTitle() {

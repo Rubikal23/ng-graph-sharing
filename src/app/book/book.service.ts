@@ -1,16 +1,50 @@
 import { Injectable } from "@angular/core";
 import { Apollo } from "apollo-angular";
+import gql from "graphql-tag";
+import {Book, Query} from "./book.type";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
+import {SharedService} from "../shared/shared.service";
 
 @Injectable()
 export class BookService {
-  constructor(private apollo: Apollo) {}
+  allBooksQuery = gql`{
+      allBooks {
+          id
+          price
+          status
+          title
+      }
+  }`;
 
-  getAllBooks() {
+    bookQuery = gql`{
+        myBook {
+            id
+            price
+            status
+            title
+        }
+    }`;
 
+  constructor(
+    private apollo: Apollo,
+    private sharedService: SharedService
+  ) {}
+
+  getAllBooks(): Observable<Book[]> {
+    return this.apollo.subscribe<Query>({
+      query: this.allBooksQuery
+    }).pipe(
+      map(result => result.data.allBooks)
+    );
   }
 
-  getBookById(bookId: string) {
-
+  getBook(): Observable<Book> {
+    return this.apollo.subscribe<Query>({
+      query: this.bookQuery
+    }).pipe(
+      map(results => results.data.myBook)
+    );
   }
 
   getBookStatusOfUser(userId: string, bookId: string) {

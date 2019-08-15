@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Apollo} from "apollo-angular";
 
-import gql from 'graphql-tag';
-
-import {Book, Query} from "../book.type";
+import {Book} from "../book.type";
+import {BookService} from "../book.service";
 
 @Component({
   selector: 'app-books-list',
@@ -13,24 +11,12 @@ import {Book, Query} from "../book.type";
 export class BooksListComponent implements OnInit {
   books: Book[];
 
-  allBooksQuery = gql`{
-      allBooks {
-          id
-          price
-          status
-          title
-      }
-  }`;
-
-  constructor(private apollo: Apollo) {
+  constructor(private bookService: BookService) {
   }
 
   ngOnInit() {
-    this.apollo.watchQuery<Query>({
-      query: this.allBooksQuery
-    })
-      .valueChanges.subscribe(result => {
-      this.books = result.data.allBooks;
+    this.bookService.getAllBooks().subscribe(books => {
+      this.books = books;
     });
   }
 }
