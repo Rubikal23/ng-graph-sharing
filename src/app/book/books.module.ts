@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {BooksListComponent} from './books-list/books-list.component';
 import {BookComponent} from './book/book.component';
 import {BookApiService} from './bookApi.service';
-import {BookStateService} from "./bookState.service";
 import {BookFacadeService} from "./book.facade";
 import {FormsModule} from "@angular/forms";
 
@@ -19,7 +18,6 @@ import {FormsModule} from "@angular/forms";
   ],
   providers: [
     BookApiService,
-    BookStateService,
     BookFacadeService
   ]
 })

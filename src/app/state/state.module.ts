@@ -1,6 +1,7 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {StateService} from "./state.service";
+import {BookStateService} from "./book.state.service";
 
 @NgModule({
   declarations: [],
@@ -8,7 +9,8 @@ import {StateService} from "./state.service";
     CommonModule,
   ],
   providers: [
-    StateService
+    StateService,
+    BookStateService,
   ]
 })
 export class StateModule {

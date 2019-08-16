@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { UserApiService } from './user-api.service';
 import { UserFacadeService } from './user.facade.service';
-import { UserStateService } from './user-state.service';
 
 @NgModule({
   declarations: [UserComponent],
@@ -16,7 +15,6 @@ import { UserStateService } from './user-state.service';
   providers: [
     UserApiService,
     UserFacadeService,
-    UserStateService
   ]
 })
 export class UserModule { }

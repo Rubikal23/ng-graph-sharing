@@ -1,7 +1,7 @@
-import {BehaviorSubject, Observable} from "rxjs";
-import {Book} from "./book.type";
+import {Observable} from "rxjs";
+import {Book} from "../book/book.type";
 import {Injectable} from "@angular/core";
-import { StateService } from '../state/state.service';
+import { StateService } from './state.service';
 
 @Injectable()
 export class BookStateService {
@@ -30,5 +30,13 @@ export class BookStateService {
 
   getCurrentBook() {
     return this.stateService.book.getValue();
+  }
+
+  AddNewBook(newBook: Book) {
+    console.log('Adding new book');
+  debugger;
+    let books = this.stateService.books.getValue();
+    let newBooks = [...books, newBook];
+    this.stateService.books.next(newBooks);
   }
 }
