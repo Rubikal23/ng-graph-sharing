@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BookApiService} from "./bookApi.service";
 import {BookStateService} from "./bookState.service";
-import {of} from "rxjs";
+import {Observable, of} from "rxjs";
+import {Book} from "./book.type";
 
 @Injectable()
 export class BookFacadeService {
@@ -30,10 +31,12 @@ export class BookFacadeService {
     return this.bookStateService.getBookState();
   }
 
-  changeBooks() {
-    console.log('Hello world');
-    return of({});
+  changeBooks(book: Book) {
+    this.bookStateService.setBookState(book);
   }
 
+  listenBookChange(): Observable<Book> {
+    return this.bookStateService.getBookState();
+  }
 
 }

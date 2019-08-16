@@ -4,5 +4,6 @@
   <div class="book-chapters">{{ book.price }}</div>
   <div class="book-status">{{ book.status }}</div>
   <br>
-  <button class="jasmine-suite button" (click)="changeTitle()">Change Title</button>
+  <input type="text" class="book-input" [value]="book.title" [(ngModel)]="book.title">
+  <button class="button" (click)="changeTitle()">Change Title</button>
 </ng-container>

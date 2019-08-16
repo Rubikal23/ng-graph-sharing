@@ -5,6 +5,7 @@ import {BookComponent} from './book/book.component';
 import {BookApiService} from './bookApi.service';
 import {BookStateService} from "./bookState.service";
 import {BookFacadeService} from "./book.facade";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [BooksListComponent, BookComponent],
@@ -13,7 +14,8 @@ import {BookFacadeService} from "./book.facade";
     BookComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     BookApiService,

@@ -16,14 +16,13 @@ export class BookComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookFacadeService.getBook()
-      .subscribe(book => {
-        this.book = book;
-      });
+    this.bookFacadeService.listenBookChange().subscribe(book => {
+      this.book = book;
+    })
   }
 
   changeTitle() {
-
+    this.bookFacadeService.changeBooks({...this.book, price: 400});
   }
 
 }

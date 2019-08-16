@@ -11,6 +11,7 @@ import {filter} from "rxjs/operators";
 })
 export class BooksListComponent implements OnInit {
   books: Book[];
+  selectedBook: Book;
 
   constructor(private bookFacadeService: BookFacadeService) {
   }
@@ -21,5 +22,14 @@ export class BooksListComponent implements OnInit {
       .subscribe(books => {
         this.books = books;
       });
+
+    this.bookFacadeService.getBook()
+      .subscribe(book => {
+        this.selectedBook = book;
+      })
+
+    this.bookFacadeService.listenBookChange().subscribe(book => {
+      this.selectedBook = book;
+    })
   }
 }
