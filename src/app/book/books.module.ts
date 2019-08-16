@@ -2,7 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BooksListComponent} from './books-list/books-list.component';
 import {BookComponent} from './book/book.component';
-import {BookService} from './book.service';
+import {BookApiService} from './bookApi.service';
+import {BookStateService} from "./bookState.service";
+import {BookFacadeService} from "./book.facade";
 
 @NgModule({
   declarations: [BooksListComponent, BookComponent],
@@ -14,7 +16,9 @@ import {BookService} from './book.service';
     CommonModule
   ],
   providers: [
-    BookService
+    BookApiService,
+    BookStateService,
+    BookFacadeService
   ]
 })
 export class BooksModule {

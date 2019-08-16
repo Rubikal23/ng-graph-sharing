@@ -6,7 +6,7 @@ import {GraphQLModule} from './graphql.module';
 import {HttpClientModule} from '@angular/common/http';
 import {ApolloModule} from "apollo-angular";
 import {BooksModule} from "./book/books.module";
-import {SharedModule} from "./shared/shared.module";
+import {StateModule} from "./state/state.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import {SharedModule} from "./shared/shared.module";
     HttpClientModule,
     ApolloModule,
     BooksModule,
-    SharedModule
+    StateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

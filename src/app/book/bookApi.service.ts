@@ -4,10 +4,9 @@ import gql from "graphql-tag";
 import {Book, Query} from "./book.type";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {SharedService} from "../shared/shared.service";
 
 @Injectable()
-export class BookService {
+export class BookApiService {
     allBooksQuery = gql`{
         allBooks {
             id
@@ -28,7 +27,6 @@ export class BookService {
 
   constructor(
     private apollo: Apollo,
-    private sharedService: SharedService
   ) {
   }
 
@@ -50,7 +48,7 @@ export class BookService {
 
   changeBooks(books: Book[]) {
   debugger;
-    // this.sharedService.books.next(books);
+  // this.sharedService.books.next(books);
   }
 
   getBookStatusOfUser(userId: string, bookId: string) {

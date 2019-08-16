@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import gql from "graphql-tag";
-import {Apollo} from "apollo-angular";
-import {Book, Query} from "../book.type";
-import {BookService} from "../book.service";
+import {Component, OnInit} from '@angular/core';
+import {Book} from "../book.type";
+import {BookFacadeService} from "../book.facade";
 
 @Component({
   selector: 'app-book',
@@ -13,16 +11,17 @@ export class BookComponent implements OnInit {
 
   book: Book;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookFacadeService: BookFacadeService) {
+  }
 
   ngOnInit() {
-    this.bookService.getBook().subscribe(book => {
-      this.book = book;
-    });
+    // this.bookFacadeService.getBook().subscribe(book => {
+    //   this.book = book;
+    // });
   }
 
   changeTitle() {
-    this.bookService.changeBooks([]);
+
   }
 
 }

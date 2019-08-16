@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Book} from "../book.type";
-import {BookService} from "../book.service";
+import {BookFacadeService} from "../book.facade";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-books-list',
@@ -11,11 +12,13 @@ import {BookService} from "../book.service";
 export class BooksListComponent implements OnInit {
   books: Book[];
 
-  constructor(private bookService: BookService) {
+  constructor(private bookFacadeService: BookFacadeService) {
   }
 
   ngOnInit() {
-    this.bookService.getAllBooks().subscribe(books => {
+    this.bookFacadeService.getAllBooks().pipe(filter(books => !!books.length))
+      .subscribe(books => {
+      debugger;
       this.books = books;
     });
   }
