@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Apollo } from "apollo-angular";
+import {Injectable} from "@angular/core";
+import {Apollo} from "apollo-angular";
 import gql from "graphql-tag";
 import {Book, Query} from "./book.type";
 import {Observable} from "rxjs";
@@ -8,14 +8,14 @@ import {SharedService} from "../shared/shared.service";
 
 @Injectable()
 export class BookService {
-  allBooksQuery = gql`{
-      allBooks {
-          id
-          price
-          status
-          title
-      }
-  }`;
+    allBooksQuery = gql`{
+        allBooks {
+            id
+            price
+            status
+            title
+        }
+    }`;
 
     bookQuery = gql`{
         myBook {
@@ -29,7 +29,8 @@ export class BookService {
   constructor(
     private apollo: Apollo,
     private sharedService: SharedService
-  ) {}
+  ) {
+  }
 
   getAllBooks(): Observable<Book[]> {
     return this.apollo.subscribe<Query>({
@@ -45,6 +46,11 @@ export class BookService {
     }).pipe(
       map(results => results.data.myBook)
     );
+  }
+
+  changeBooks(books: Book[]) {
+  debugger;
+    // this.sharedService.books.next(books);
   }
 
   getBookStatusOfUser(userId: string, bookId: string) {

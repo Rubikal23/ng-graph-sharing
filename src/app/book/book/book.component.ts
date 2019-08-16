@@ -22,7 +22,7 @@ export class BookComponent implements OnInit {
   }
 
   changeTitle() {
-
+    this.bookService.changeBooks([]);
   }
 
 }

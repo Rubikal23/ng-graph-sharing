@@ -1,6 +1,8 @@
-<h3>My chosen Book</h3>
-<div class="book-title">{{ book.title }}</div>
-<div class="book-chapters">{{ book.price }}</div>
-<div class="book-status">{{ book.status }}</div>
-<br>
-<button class="jasmine-suite button" (click)="changeTitle()">Change Title</button>
+<ng-container *ngIf="book">
+  <h3>My chosen Book</h3>
+  <div class="book-title">{{ book.title }}</div>
+  <div class="book-chapters">{{ book.price }}</div>
+  <div class="book-status">{{ book.status }}</div>
+  <br>
+  <button class="jasmine-suite button" (click)="changeTitle()">Change Title</button>
+</ng-container>
