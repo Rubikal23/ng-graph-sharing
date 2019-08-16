@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Book} from "../book.type";
 import {BookFacadeService} from "../book.facade";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-book',
@@ -15,9 +16,10 @@ export class BookComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.bookFacadeService.getBook().subscribe(book => {
-    //   this.book = book;
-    // });
+    this.bookFacadeService.getBook()
+      .subscribe(book => {
+        this.book = book;
+      });
   }
 
   changeTitle() {

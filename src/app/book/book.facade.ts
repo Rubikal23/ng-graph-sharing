@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {BookApiService} from "./bookApi.service";
 import {BookStateService} from "./bookState.service";
 import {of} from "rxjs";
-import {Book} from "./book.type";
 
 @Injectable()
 export class BookFacadeService {
@@ -12,18 +11,23 @@ export class BookFacadeService {
   }
 
   getAllBooks() {
-    debugger;
     if (!this.bookStateService.getCurrentBooks().length) {
       this.bookApiService.getAllBooks().subscribe((data) => {
-        this.bookStateService.setBookState(data);
+        this.bookStateService.setBooksState(data);
       })
     }
-    return this.bookStateService.getBookState();
+    return this.bookStateService.getBooksState();
   }
 
 
   getBook() {
+    if (!!this.bookStateService.getCurrentBook()) {
+      this.bookApiService.getBook().subscribe((book) => {
+        this.bookStateService.setBookState(book);
+      });
+    }
 
+    return this.bookStateService.getBookState();
   }
 
   changeBooks() {

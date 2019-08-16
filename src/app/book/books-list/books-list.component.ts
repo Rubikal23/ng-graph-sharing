@@ -16,10 +16,10 @@ export class BooksListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookFacadeService.getAllBooks().pipe(filter(books => !!books.length))
+    this.bookFacadeService.getAllBooks()
+      .pipe(filter(books => !!books.length))
       .subscribe(books => {
-      debugger;
-      this.books = books;
-    });
+        this.books = books;
+      });
   }
 }
