@@ -14,8 +14,10 @@ export class BookFacadeService {
   getAllBooks() {
     if (!this.bookStateService.getCurrentBooks().length) {
       this.bookApiService.getAllBooks().subscribe((data) => {
-        this.bookStateService.setBooksState(data);
-      })
+        const books = this.bookStateService.getCurrentBooks();
+        const newBookArray = [...books, ...data];
+        this.bookStateService.setBooksState(newBookArray);
+      });
     }
     return this.bookStateService.getBooksState();
   }
