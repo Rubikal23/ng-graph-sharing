@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BookApiService} from "./bookApi.service";
-import {BookStateService} from "./bookState.service";
-import {Observable, of} from "rxjs";
-import {Book} from "./book.type";
+import {BookApiService} from './bookApi.service';
+import {BookStateService} from './bookState.service';
+import {Observable, of} from 'rxjs';
+import {Book} from './book.type';
 
 @Injectable()
 export class BookFacadeService {
@@ -14,8 +14,10 @@ export class BookFacadeService {
   getAllBooks() {
     if (!this.bookStateService.getCurrentBooks().length) {
       this.bookApiService.getAllBooks().subscribe((data) => {
-        this.bookStateService.setBooksState(data);
-      })
+        const books = this.bookStateService.getCurrentBooks();
+        const newBookArray = [...books, ...data];
+        this.bookStateService.setBooksState(newBookArray);
+      });
     }
     return this.bookStateService.getBooksState();
   }

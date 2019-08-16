@@ -14,9 +14,8 @@ export class UserStateService {
 
   AddNewBook(newBook: Book) {
     console.log('Adding new book');
-  debugger;
-    let books = this.stateService.books.getValue();
-    let newBooks = [...books, newBook];
+    const books = this.stateService.books.getValue();
+    const newBooks = [...books, newBook];
     this.stateService.books.next(newBooks);
   }
 
