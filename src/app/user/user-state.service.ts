@@ -19,4 +19,8 @@ export class UserStateService {
     let newBooks = [...books, newBook];
     this.stateService.books.next(newBooks);
   }
+
+  getBookState() {
+    return this.stateService.book$;
+  }
 }

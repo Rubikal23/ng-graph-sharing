@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserFacadeService } from './user.facade.service';
+import {Book} from "../book/book.type";
 
 @Component({
   selector: 'app-user',
@@ -15,11 +16,18 @@ export class UserComponent implements OnInit {
     price: 320
   };
 
+  book: Book = this.newBook;
+
   constructor(private userFacadeService: UserFacadeService) { }
 
   ngOnInit() {
     this.userFacadeService.showBooks();
     this.userFacadeService.addBook(this.newBook);
+
+    this.userFacadeService.listenBookChange()
+      .subscribe(book => {
+        this.book = book;
+      })
   }
 
 }

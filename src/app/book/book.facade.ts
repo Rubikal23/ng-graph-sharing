@@ -38,5 +38,4 @@ export class BookFacadeService {
   listenBookChange(): Observable<Book> {
     return this.bookStateService.getBookState();
   }
-
 }
