@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ApolloModule} from "apollo-angular";
 import {BooksModule} from "./book/books.module";
 import {StateModule} from "./state/state.module";
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {StateModule} from "./state/state.module";
     HttpClientModule,
     ApolloModule,
     BooksModule,
-    StateModule
+    UserModule,
+    StateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

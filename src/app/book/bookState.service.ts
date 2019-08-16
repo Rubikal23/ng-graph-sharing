@@ -1,38 +1,34 @@
 import {BehaviorSubject, Observable} from "rxjs";
 import {Book} from "./book.type";
 import {Injectable} from "@angular/core";
+import { StateService } from '../state/state.service';
 
 @Injectable()
 export class BookStateService {
-  private books = new BehaviorSubject<Book[]>([]);
-  private book = new BehaviorSubject<Book>(<Book>{});
 
-  books$ = this.books.asObservable();
-  book$ = this.book.asObservable();
-
+  constructor(private stateService: StateService) {}
 
   getBooksState(): Observable<Book[]> {
-    return this.books$;
+    return this.stateService.books$;
   }
 
   setBooksState(books: Book[]) {
-    this.books.next(books);
+    this.stateService.books.next(books);
   }
 
   getCurrentBooks() {
-    return this.books.getValue();
+    return this.stateService.books.getValue();
   }
 
   getBookState(): Observable<Book> {
-    return this.book$;
+    return this.stateService.book$;
   }
 
   setBookState(book: Book) {
-    this.book.next(book);
+    this.stateService.book.next(book);
   }
 
   getCurrentBook() {
-    return this.book.getValue();
+    return this.stateService.book.getValue();
   }
-
 }
